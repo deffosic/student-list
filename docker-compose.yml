@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+
+  web:
+
+      image: php:apache
+
+      environment:
+
+        - USERNAME=toto
+
+        - PASSWORD=python
+
+      depends_on:
+
+        - api
+
+      ports:
+
+        - "80:80"
+
+      volumes:
+
+        - ./website:/var/www/html
+
+  api:
+
+      image: api_cedric
+
+      ports:
+
+        - "5050:5000"
+
+      volumes:
+
+        - ./simple_api:/data
